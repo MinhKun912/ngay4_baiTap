@@ -40,4 +40,7 @@ CREATE TABLE Mark
 select subject. * from subject where  credit=(select max(credit) from subject); 
 select subject. * from subject join mark m on m.subID = subject.subID
 where m.mark=(select max(mark) from mark);
- 
+ select s.studentId,s.studentName,avg(m.mark)
+from student s join mark m on s.studentId=m.studentId
+group by s.studentId,s.studentName
+order by avg(m.mark ) desc;
